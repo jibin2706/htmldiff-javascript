@@ -133,6 +133,18 @@ describe('HtmlDiff.execute', () => {
 			expect(result).toBeDefined()
 			expect(result.length).toBeGreaterThan(0)
 		})
+
+		it('skips consecutive opening special tags on delete (variable shadowing fix)', () => {
+			// When tag param is 'del', opening special-case tags should be skipped.
+			// Before the fix, a local variable shadowed the parameter, making this branch dead code.
+			const oldText = '<strong><em>styled text</em></strong>'
+			const newText = 'plain text'
+			const result = HtmlDiff.execute(oldText, newText)
+			expect(result).toBeDefined()
+			expect(result.length).toBeGreaterThan(0)
+			// Verify the diff contains delete markers for the removed formatted content
+			expect(result).toContain('<del')
+		})
 	})
 
 	describe('options', () => {

@@ -146,8 +146,8 @@ class HtmlDiff {
 			} else {
 				if (specialCaseOpeningTagRegex.test(words[0])) {
 					let matchedTag = words[0].match(specialCaseOpeningTagRegex)
-					let tag = '<' + matchedTag?.[0].replace(/(<|>| )/g, '') + '>'
-					this.specialTagDiffStack.push(tag)
+					let openingSpecialTag = '<' + matchedTag?.[0].replace(/(<|>| )/g, '') + '>'
+					this.specialTagDiffStack.push(openingSpecialTag)
 					specialCaseTagInjection = '<ins class="mod">'
 					if (tag === 'del') {
 						words.shift()
