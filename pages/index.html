@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htmldiff - Interactive Demo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+        }
+
+        .editors {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 6px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 180px;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.8125rem;
+            line-height: 1.5;
+            resize: vertical;
+            background: #fff;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .output-section {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .output-section h2 {
+            font-size: 0.875rem;
+            padding: 10px 16px;
+            background: #f3f4f6;
+            border-bottom: 1px solid #d1d5db;
+        }
+
+        .preview {
+            padding: 16px;
+            min-height: 60px;
+            line-height: 1.6;
+        }
+
+        .preview ins.diffins {
+            background: #d4edda;
+            text-decoration: none;
+        }
+
+        .preview del.diffdel {
+            background: #f8d7da;
+            text-decoration: line-through;
+        }
+
+        .preview ins.diffmod {
+            background: #d4edda;
+            text-decoration: none;
+        }
+
+        .preview del.diffmod {
+            background: #f8d7da;
+            text-decoration: line-through;
+        }
+
+        .preview ins.mod {
+            background: #d4edda;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>htmldiff-javascript</h1>
+    <p class="subtitle">Edit the HTML below to see the diff preview update in real time.</p>
+
+    <div class="editors">
+        <div>
+            <label for="oldHtml">Old HTML</label>
+            <textarea id="oldHtml"><p>Some <em>old</em> html here</p></textarea>
+        </div>
+        <div>
+            <label for="newHtml">New HTML</label>
+            <textarea id="newHtml"><p>Some <b>new</b> html goes here</p></textarea>
+        </div>
+    </div>
+
+    <div class="output-section">
+        <h2>Diff Preview</h2>
+        <div id="preview" class="preview"></div>
+    </div>
+
+    <script type="module">
+        import HtmlDiff from '../dist/Diff.js'
+
+        const oldHtml = document.getElementById('oldHtml')
+        const newHtml = document.getElementById('newHtml')
+        const preview = document.getElementById('preview')
+
+        function updateDiff() {
+            preview.innerHTML = HtmlDiff.execute(oldHtml.value, newHtml.value)
+        }
+
+        oldHtml.addEventListener('input', updateDiff)
+        newHtml.addEventListener('input', updateDiff)
+
+        updateDiff()
+    </script>
+</body>
+
+</html>
