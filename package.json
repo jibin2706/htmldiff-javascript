@@ -23,13 +23,17 @@
 	},
 	"scripts": {
 		"dev": "vite src/demo",
+		"typecheck": "tsc --noEmit",
 		"build": "tsc && vite build",
+		"test": "vitest run",
+		"test:watch": "vitest",
 		"publish": "npm publish --access public"
 	},
 	"devDependencies": {
 		"@types/node": "^20.4.4",
 		"typescript": "^5.1.6",
 		"vite": "^4.4.6",
-		"vite-plugin-dts": "^3.3.1"
+		"vite-plugin-dts": "^3.3.1",
+		"vitest": "^4.0.18"
 	}
 }

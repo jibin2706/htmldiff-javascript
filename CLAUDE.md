@@ -8,9 +8,9 @@ htmldiff-javascript is a zero-dependency TypeScript library that diffs two HTML 
 
 - `pnpm dev` — Start Vite dev server for the demo page (`src/demo/index.html`)
 - `pnpm build` — TypeScript compilation + Vite library build (outputs to `dist/`)
+- `pnpm test` — Run tests once (Vitest)
+- `pnpm test:watch` — Run tests in watch mode
 - `pnpm publish` — Publish to npm
-
-There are no tests yet.
 
 ## Architecture
 
