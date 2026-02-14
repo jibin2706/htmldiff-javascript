@@ -4,12 +4,12 @@ Diffs two HTML blocks, and returns a meshing of the two that includes `<ins>` an
 
 For "special tags" (primarily style tags such as `<em>` and `<strong>`), `ins.mod` elements are inserted with the new styles.
 
-Typescript port of [htmldiff.net](https://github.com/Rohland/htmldiff.net).
+Zero-dependency TypeScript port of [htmldiff.net](https://github.com/Rohland/htmldiff.net).
 
 Fork of [htmldiff-js](https://github.com/dfoverdx/htmldiff-js). With the following changes:
 
-1. Typescript
-2. Expose [options](src/lib/types.ts) from the HTMLDiff class
+1. TypeScript
+2. Expose [options](src/lib/types.ts) from the HtmlDiff class
 
 ## Installation
 
@@ -19,34 +19,32 @@ npm install htmldiff-javascript
 
 ## Usage
 
-```html
-<html>
-	<body>
-		<div id="oldHtml">
-			<p>Some <em>old</em> html here</p>
-		</div>
-
-		<div id="newHtml">
-			<p>Some <b>new</b> html goes here</p>
-		</div>
-
-		<div id="diffHtml"></div>
-	</body>
-</html>
-```
-
-```javascript
+```typescript
 import HtmlDiff from 'htmldiff-javascript'
 
-let oldHtml = document.getElementById('oldHtml')
-let newHtml = document.getElementById('newHtml')
-let diffHtml = document.getElementById('diffHtml')
-
-diffHtml.innerHTML = HtmlDiff.execute(oldHtml.innerHTML, newHtml.innerHTML)
+const result = HtmlDiff.execute('<p>old html</p>', '<p>new html</p>')
 ```
 
-## TODOs
+With options:
 
-- [x] Convert everything to typescript
-- [ ] Add tests
-- [ ] Setup Publishing Pipeline
+```typescript
+import HtmlDiff from 'htmldiff-javascript'
+
+const result = HtmlDiff.execute(oldHtml, newHtml, {
+	repeatingWordsAccuracy: 1.0,
+	ignoreWhiteSpaceDifferences: false,
+	orphanMatchThreshold: 0.0,
+})
+```
+
+## Development
+
+Requires [Bun](https://bun.sh/).
+
+```bash
+bun install        # install dependencies
+bun run build      # compile TypeScript (outputs to dist/)
+bun test           # run tests
+bun test --watch   # run tests in watch mode
+bun dev            # start local HTTP server for the demo page
+```
