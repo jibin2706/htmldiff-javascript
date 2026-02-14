@@ -1,9 +1,9 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, spyOn, beforeEach } from 'bun:test'
 import { convertHtmlToListOfWords } from './WordSplitter'
 
 // Suppress console.log from WordSplitter entity handling
 beforeEach(() => {
-	vi.spyOn(console, 'log').mockImplementation(() => {})
+	spyOn(console, 'log').mockImplementation(() => {})
 })
 
 describe('convertHtmlToListOfWords', () => {

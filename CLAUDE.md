@@ -6,11 +6,11 @@ htmldiff-javascript is a zero-dependency TypeScript library that diffs two HTML 
 
 ## Commands
 
-- `pnpm dev` — Start Vite dev server for the demo page (`src/demo/index.html`)
-- `pnpm build` — TypeScript compilation + Vite library build (outputs to `dist/`)
-- `pnpm test` — Run tests once (Vitest)
-- `pnpm test:watch` — Run tests in watch mode
-- `pnpm publish` — Publish to npm
+- `bun dev` — Start local HTTP server for the demo page (`src/demo/index.html`)
+- `bun run build` — TypeScript compilation via `tsc` (outputs to `dist/`)
+- `bun test` — Run tests once (Bun's built-in test runner)
+- `bun test --watch` — Run tests in watch mode
+- `npm publish --access public` — Publish to npm
 
 ## Architecture
 
@@ -37,9 +37,6 @@ Supporting files:
 
 ## Build
 
-Vite library mode outputs:
-- `dist/htmldiff.js` (ESM)
-- `dist/htmldiff.umd.cjs` (UMD)
-- `dist/Diff.d.ts` (type declarations via vite-plugin-dts)
-
-Minification is disabled.
+ESM-only output via `tsc`:
+- `dist/Diff.js` (ESM entry point)
+- `dist/Diff.d.ts` (type declarations)

@@ -1,9 +1,9 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, spyOn, beforeEach } from 'bun:test'
 import HtmlDiff from './Diff'
 
 // Suppress console.log from WordSplitter entity handling
 beforeEach(() => {
-	vi.spyOn(console, 'log').mockImplementation(() => {})
+	spyOn(console, 'log').mockImplementation(() => {})
 })
 
 function countOccurrences(str: string, substr: string): number {
