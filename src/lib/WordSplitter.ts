@@ -1,5 +1,5 @@
-﻿import Mode from './Mode'
-import * as Utils from './Utils'
+﻿import Mode from './Mode.js'
+import * as Utils from './Utils.js'
 
 type State = {
 	mode: number

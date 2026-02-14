@@ -1,11 +1,11 @@
-﻿import Action from './Action'
-import Match from './Match'
-import MatchFinder from './MatchFinder'
-import Operation from './Operation'
-import MatchOptions from './MatchOptions'
-import * as WordSplitter from './WordSplitter'
-import * as Utils from './Utils'
-import type { HTMLDiffOptions } from './types'
+﻿import Action from './Action.js'
+import Match from './Match.js'
+import MatchFinder from './MatchFinder.js'
+import Operation from './Operation.js'
+import MatchOptions from './MatchOptions.js'
+import * as WordSplitter from './WordSplitter.js'
+import * as Utils from './Utils.js'
+import type { HTMLDiffOptions } from './types.js'
 
 // This value defines balance between speed and memory utilization. The higher it is the faster it works and more memory consumes.
 const MatchGranuarityMaximum = 4

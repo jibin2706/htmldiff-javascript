@@ -1,6 +1,6 @@
-﻿import Match from './Match'
-import MatchOptions from './MatchOptions'
-import * as Utils from './Utils'
+﻿import Match from './Match.js'
+import MatchOptions from './MatchOptions.js'
+import * as Utils from './Utils.js'
 
 function putNewWord(block: string[], word: string, blockSize: number) {
 	block.push(word)
